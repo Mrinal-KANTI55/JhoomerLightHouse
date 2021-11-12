@@ -10,25 +10,25 @@ import {
 } from "react-router-dom";
 import ManageAllProduct from './ManageAllProduct/ManageAllProduct';
 
- const Topics=()=> {
+ const AdminTopics=()=> {
     let { path, url } = useRouteMatch();
 
     return (
         <div className='row'>
             <div className='col-lg-2 col-md-3 col-sm-12 border-end border-secondary'>
-                <h2>Topics</h2>
-                <ul>
-                    <li>
-                        <Link to={`${url}/ManageUserOrder`}>ManageUserOrder</Link>
+                <h2 className='my-5'>Admin Menu</h2>
+                <ul className='list-group text-start'>
+                    <li className='ms-2 my-2 '>
+                        <Link className='text-decoration-none font-monospace' to={`${url}/ManageUserOrder`}>Manage User Order</Link>
                     </li>
-                    <li>
-                        <Link to={`${url}/AddProduct`}>AddProduct</Link>
+                    <li className='ms-2 my-2 '>
+                        <Link className='text-decoration-none font-monospace' to={`${url}/AddProduct`}>Add Product</Link>
                     </li>
-                    <li>
-                        <Link to={`${url}/AddAdmin`}>AddAdmin</Link>
+                    <li className='ms-2 my-2 '>
+                        <Link className='text-decoration-none font-monospace' to={`${url}/AddAdmin`}>Add Admin</Link>
                     </li>
-                    <li>
-                        <Link to={`${url}/ManageAllProduct`}>ManageAllProduct</Link>
+                    <li className='ms-2 my-2 '>
+                        <Link className='text-decoration-none font-monospace' to={`${url}/ManageAllProduct`}>Manage All Product</Link>
                     </li>
                 </ul>
             </div>
@@ -56,4 +56,4 @@ import ManageAllProduct from './ManageAllProduct/ManageAllProduct';
     );
 }
 
-export default Topics;
+export default AdminTopics;

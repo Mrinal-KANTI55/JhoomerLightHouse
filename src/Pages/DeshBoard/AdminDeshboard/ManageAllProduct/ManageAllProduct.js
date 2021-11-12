@@ -6,7 +6,6 @@ const ManageAllProduct = () => {
     useEffect(() => {
         axios.get('https://fathomless-headland-44349.herokuapp.com/product')
             .then(res => {
-                console.log(res.data);
                 setProducts(res.data);
             });
     }, []);
@@ -30,7 +29,7 @@ const ManageAllProduct = () => {
     return (
         <div>
             <h2 className='mt-5'>All Products Information </h2>
-            <Table striped bordered hover>
+            <Table striped bordered hover className='my-5'>
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -40,7 +39,7 @@ const ManageAllProduct = () => {
                 </thead>
                 <tbody>
                     {
-                        Products.map(ProductInfo => <tr key={ProductInfo._id} Product={ProductInfo}>
+                        Products.map(ProductInfo => <tr key={ProductInfo._id}>
                             <td>{ProductInfo.ProductName}</td>
                             <td>{ProductInfo.price}</td>
                             <td> <Button onClick={() => {

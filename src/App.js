@@ -1,6 +1,5 @@
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
-import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/LogIn/Registration/Registration';
 import {
   BrowserRouter as Router,
@@ -10,6 +9,10 @@ import {
 import AdminDeshboard from './Pages/DeshBoard/AdminDeshboard/AdminDeshboard';
 import CustomerDeshboard from './Pages/DeshBoard/CustomerDeshboard/CustomerDeshboard';
 import Header from './Pages/Home/Header/Header';
+import SellingProduct from './Pages/SellingProduct/SellingProduct';
+import SelectProduct from './Pages/SellingProduct/SelectProduct/SelectProduct';
+import PrivateRoute from './Pages/LogIn/PrivateRoute/PrivateRoute';
+import LogIn from './Pages/LogIn/LogIn';
 
 function App() {
   return (
@@ -18,8 +21,8 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/LogIn">
-              <LogIn />
+            <Route exact path="/SellingProduct">
+              <SellingProduct />
             </Route>
             <Route path="/Registration">
               <Registration />
@@ -30,11 +33,15 @@ function App() {
             <Route path="/CustomerDeshboard">
               <CustomerDeshboard />
             </Route>
+            <Route path="/LogIn">
+              <LogIn />
+            </Route>
+            <PrivateRoute path='/SelectProduct/:productId' >
+              <SelectProduct></SelectProduct>
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>
-      {/* <LogIn></LogIn>
-      <Registration></Registration> */}
     </div>
   );
 }
