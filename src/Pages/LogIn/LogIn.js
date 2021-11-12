@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
 import UseAuth from '../../Hook/UseAuth';
 
 const LogIn = () => {
+    const location = useLocation();
+    const history = useHistory();
     const [userInfo, setUserInfo] = useState({});
     const { user, userLogin, UserLogOut } = UseAuth();
     const WellComeUser = e => {
@@ -14,7 +17,7 @@ const LogIn = () => {
         console.log(getInfo);
     }
     const handelUserLogin = e => {
-        userLogin(userInfo.email, userInfo.password);
+        userLogin(userInfo.email, userInfo.password,location,history);
         e.preventDefault();
     }
     return (

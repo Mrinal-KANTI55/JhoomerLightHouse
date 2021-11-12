@@ -5,7 +5,7 @@ import UseAuth from '../../../Hook/UseAuth';
 
 
 const Header = () => {
-     const { user, UserLogOut } = UseAuth ();
+     const { user, UserLogOut ,admin } = UseAuth ();
     return (
         <div>
             <h2>header</h2>
@@ -17,7 +17,7 @@ const Header = () => {
                         <Nav className="me-auto text-decoration-none">
                             <Link className="text-decoration-none text-light mx-2" to='/SellingProduct'>Products</Link>
                             <Link className="text-decoration-none text-light mx-2" to='/Registration'>Registration</Link>
-                            <Link className="text-decoration-none text-light mx-2" to='/AdminDeshboard'>AdminDeshboard</Link>
+                            {admin && <Link className="text-decoration-none text-light mx-2" to='/AdminDeshboard'>AdminDeshboard</Link>}
                             <Link className="text-decoration-none text-light mx-2" to='/CustomerDeshboard'>CustomerDeshboard</Link>
                             <Link className='text-light text-decoration-none me-3' to="/login">{!user.email ? 'Log In' :
                                 <p onClick={UserLogOut} >log Out</p>}</Link>

@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 initializeFireBase();
 const UseFireBase = () => {
     const [user, setUser] = useState({});
+    const [admin, setAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const auth = getAuth();
-    const userCreateAccount = (email, password, UserName) => {
+    const userCreateAccount = (email, password, UserName,location,history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -25,6 +26,8 @@ const UseFireBase = () => {
                     // An error occurred
                     // ...
                 }).finally(() => setIsLoading(false));
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
             })
             .catch((error) => {
                 // const errorCode = error.code;
@@ -32,14 +35,13 @@ const UseFireBase = () => {
                 // ..
             });
     }
-    const userLogin = (email, password) => {
+    const userLogin = (email, password,location,history) => {
         setIsLoading(true);
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
-                // const user = userCredential.user;
-                // ...
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
                 console.log(userCredential);
             })
             .catch((error) => {
@@ -68,6 +70,11 @@ const UseFireBase = () => {
         });
         return () => unsubscribed;
     }, [auth])
+    useEffect(() => {
+        fetch(`https://fathomless-headland-44349.herokuapp.com/user/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
         fetch('https://fathomless-headland-44349.herokuapp.com/user', {
@@ -81,6 +88,7 @@ const UseFireBase = () => {
     }
     return {
         user,
+        admin,
         isLoading,
         userCreateAccount,
         userLogin,

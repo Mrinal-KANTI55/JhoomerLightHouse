@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
 import UseAuth from '../../../Hook/UseAuth';
 
 const Registration = () => {
+    const location = useLocation();
+    const history = useHistory();
     const {user,userCreateAccount,UserLogOut}=UseAuth();
     const [userInfo,setUserInfo]=useState({});
     const RegisterNewUser=e=>{
@@ -13,7 +16,7 @@ const Registration = () => {
         setUserInfo(getInfo);
     }
     const handelUser=(e)=>{
-        userCreateAccount(userInfo.email,userInfo.password,userInfo.UserName);
+        userCreateAccount(userInfo.email,userInfo.password,userInfo.UserName,location,history);
         e.preventDefault();
 
     }
