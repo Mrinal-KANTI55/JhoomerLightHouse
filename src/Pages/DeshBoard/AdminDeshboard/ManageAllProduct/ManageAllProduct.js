@@ -44,16 +44,12 @@ const ManageAllProduct = () => {
                             <td>{ProductInfo.ProductName}</td>
                             <td>{ProductInfo.price}</td>
                             <td> <Button onClick={() => {
-                    handelDelete(ProductInfo._id)
-                }}>X</Button> </td>
+                                handelDelete(ProductInfo._id)
+                            }}>X</Button> </td>
                         </tr>)
                     }
                 </tbody>
             </Table>
-            {/* {
-                Products.map(ProductInfo => <TakeDecision key={ProductInfo._id} Product={ProductInfo}></TakeDecision>)
-            } */}
-
         </div>
     );
 };
