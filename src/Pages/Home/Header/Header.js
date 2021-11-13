@@ -15,10 +15,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto text-decoration-none">
+                            <Link className="text-decoration-none text-light mx-2" to='/Home'>Home</Link>
                             <Link className="text-decoration-none text-light mx-2" to='/SellingProduct'>Products</Link>
-                            <Link className="text-decoration-none text-light mx-2" to='/Registration'>Registration</Link>
                             {admin && <Link className="text-decoration-none text-light mx-2" to='/AdminDeshboard'>AdminDeshboard</Link>}
-                            <Link className="text-decoration-none text-light mx-2" to='/CustomerDeshboard'>CustomerDeshboard</Link>
+                            {(admin || user.email) && <Link className="text-decoration-none text-light mx-2" to='/CustomerDeshboard'>CustomerDeshboard</Link>}
                             <Link className='text-light text-decoration-none me-3' to="/login">{!user.email ? 'Log In' :
                                 <p onClick={UserLogOut} >log Out</p>}</Link>
                         </Nav>

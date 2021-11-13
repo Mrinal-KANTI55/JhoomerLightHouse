@@ -13,6 +13,8 @@ import SellingProduct from './Pages/SellingProduct/SellingProduct';
 import SelectProduct from './Pages/SellingProduct/SelectProduct/SelectProduct';
 import PrivateRoute from './Pages/LogIn/PrivateRoute/PrivateRoute';
 import LogIn from './Pages/LogIn/LogIn';
+import Home from './Pages/Home/Home';
+import Footer from './Pages/Home/Footer/Footer';
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
         <Router>
           <Header />
           <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route  path="/Home">
+              <Home />
+            </Route>
             <Route exact path="/SellingProduct">
               <SellingProduct />
             </Route>
@@ -40,6 +48,7 @@ function App() {
               <SelectProduct></SelectProduct>
             </PrivateRoute>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>

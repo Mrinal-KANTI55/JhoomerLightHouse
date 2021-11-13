@@ -9,9 +9,13 @@ import {
 import Payment from './Payment/Payment';
 import Review from './Review/Review';
 import ManageOrder from './ManageOrder/ManageOrder';
+import LogIn from "../../LogIn/LogIn";
+import UseAuth from "../../../Hook/UseAuth";
 
  const CustomerTopics=()=> {
     let { path, url } = useRouteMatch();
+    const {UserLogOut}=UseAuth();
+
 
     return (
         <div className='row'>
@@ -26,6 +30,9 @@ import ManageOrder from './ManageOrder/ManageOrder';
                     </li>
                     <li className='ms-2 my-2 '>
                         <Link className='text-decoration-none font-monospace' to={`${url}/ManageOrder`}>ManageOrder</Link>
+                    </li>
+                    <li className='ms-2 my-2 '>
+                        <Link className='text-decoration-none font-monospace' to={`/LogIn`}> <p onClick={UserLogOut}>Log out</p> </Link>
                     </li>
                 </ul>
             </div>
@@ -42,6 +49,9 @@ import ManageOrder from './ManageOrder/ManageOrder';
                     </Route>
                     <Route path={`${path}/ManageOrder`}>
                         <ManageOrder />
+                    </Route>
+                    <Route path={`${path}/LogIn`}>
+                        <LogIn />
                     </Route>
 
                 </Switch>

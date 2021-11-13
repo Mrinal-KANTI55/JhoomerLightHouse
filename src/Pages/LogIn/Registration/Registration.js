@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import UseAuth from '../../../Hook/UseAuth';
 
 const Registration = () => {
@@ -21,10 +22,10 @@ const Registration = () => {
 
     }
     return (
-        <div className='container'>
-            <h2>Registration Form</h2>
+        <div className='container mb-5'>
+            <h2 className='my-5'>Registration Form</h2>
             {user.email ? <Button onClick={UserLogOut} variant="outline-success">Log Out {user.displayName}</Button>:
-            <Form >
+            <Form className='my-5'>
                 <Form.Group as={Row} className="mb-3" >
                     <Form.Label column sm="2">
                         Name
@@ -60,6 +61,8 @@ const Registration = () => {
                 </Form.Group>
                 <Button variant="outline-success" onClick={handelUser}>Registration</Button>
             </Form>}
+            <p>------------------------------------------------------------------------</p>
+            <Link className='text-dark text-decoration-none  ' to="/LogIn">Already Have An Account</Link>
         </div>
     );
 };

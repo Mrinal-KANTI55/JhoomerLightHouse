@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import UseAuth from '../../Hook/UseAuth';
 
 const LogIn = () => {
     const location = useLocation();
     const history = useHistory();
     const [userInfo, setUserInfo] = useState({});
-    const { user, userLogin, UserLogOut } = UseAuth();
+    const { user, userLogin } = UseAuth();
     const WellComeUser = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -21,10 +22,10 @@ const LogIn = () => {
         e.preventDefault();
     }
     return (
-        <div className='container'>
-            <h2>Log in form {user.displayName}</h2>
+        <div className='container mb-5'>
+            <h2 className='my-5'>Log in form {user.displayName}</h2>
             {!user.email &&
-                <Form>
+                <Form className='my-3'>
                     <Form.Group as={Row} className="mb-3" >
                         <Form.Label column sm="2" lg='4'>
                             Email
@@ -45,7 +46,8 @@ const LogIn = () => {
                     <Button onClick={handelUserLogin} variant="outline-success">Log in</Button>
                 </Form>
             }
-            <Button onClick={UserLogOut} variant="outline-success">Log out</Button>
+            <p>------------------------------------------------------------------------</p>
+            <Link className='text-dark text-decoration-none me-3' to="/Registration">Create A New Account</Link>
         </div>
     );
 };
