@@ -15,6 +15,7 @@ import PrivateRoute from './Pages/LogIn/PrivateRoute/PrivateRoute';
 import LogIn from './Pages/LogIn/LogIn';
 import Home from './Pages/Home/Home';
 import Footer from './Pages/Home/Footer/Footer';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
             <PrivateRoute path='/SelectProduct/:productId' >
               <SelectProduct></SelectProduct>
             </PrivateRoute>
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </Router>
